@@ -1,0 +1,15 @@
+language: python
+python:
+- "3.8"
+jobs:
+  include:
+  
+    - name: Check changed files
+      if: branch != master
+      script:
+        - echo "Check changed files"
+
+    - name: Build image
+      if: branch = master
+      script:
+        - echo "Build image"
