@@ -5,16 +5,13 @@ jobs:
   include:
     - name: Check changed files
       stage: check
-      if: type = pull_request
-#       branches:
-#         except:
-#           - master
+      if: env(TRAVIS_PULL_REQUEST) != false
       script:
         - echo "Check changed files"
 
     - name: Build image
       stage: build
-      if: type != pull_request
+      if: env(TRAVIS_PULL_REQUEST) = false AND env(TRAVIS_BRANCH) = master
 #       branches:
 #         only:
 #           - master
