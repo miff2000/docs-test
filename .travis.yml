@@ -14,7 +14,7 @@ jobs:
 
     - name: Build image
       stage: build
-      if: type = push
+      if: type != pull_request
 #       branches:
 #         only:
 #           - master
