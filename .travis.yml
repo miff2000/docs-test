@@ -3,7 +3,6 @@ python:
   - "3.8"
 jobs:
   include:
-  
     - name: Check changed files
       stage: check
       if: type = pull_request
