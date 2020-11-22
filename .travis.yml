@@ -5,7 +5,7 @@ jobs:
   include:
     - name: Check changed files
       stage: check
-      if: type = pull_request
+      if: env(TRAVIS_PULL_REQUEST) != false
       script:
         - echo "Check changed files"
 
