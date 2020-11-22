@@ -6,16 +6,18 @@ jobs:
   
     - name: Check changed files
       stage: check
-      branches:
-        except:
-          - master
+      if: type = pull_request
+#       branches:
+#         except:
+#           - master
       script:
         - echo "Check changed files"
 
     - name: Build image
       stage: build
-      branches:
-        only:
-          - master
+      if: type = push
+#       branches:
+#         only:
+#           - master
       script:
         - echo "Build image"
