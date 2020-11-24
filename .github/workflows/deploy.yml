@@ -8,9 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          curl -X POST \
-            --connect-timeout 20 \
-            -F token="{{ secrets.GITLAB_PIPELINE_TRIGGER_TOKEN }}" \
-            -F ref=master \
-             https://gitlab.devops.ukfast.co.uk/api/v4/projects/2570/trigger/pipeline
+          curl -X POST --connect-timeout 20 -F token="{{ secrets.GITLAB_PIPELINE_TRIGGER_TOKEN }}" -F ref=master https://gitlab.devops.ukfast.co.uk/api/v4/projects/2570/trigger/pipeline
           if [ $? -eq 0 ]; then echo "Successfully triggered pipeline"; else echo "Failed to trigger pipeline"; fi
