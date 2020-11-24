@@ -6,9 +6,9 @@ on:
 
 jobs:
   check:
+    runs-on: ubuntu-latest
     steps:
       - name: Check files
-        runs-on: ubuntu-latest
         run: |
           echo "Check files"
           env
