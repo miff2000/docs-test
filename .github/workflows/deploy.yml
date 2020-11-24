@@ -1,0 +1,14 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: >
+          curl -X POST
+            -F token="{{ secrets.GITLAB_PIPELINE_TRIGGER_TOKEN }}"
+            -F ref=master
+             https://gitlab.devops.ukfast.co.uk/api/v4/projects/2570/trigger/pipeline
