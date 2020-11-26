@@ -8,6 +8,7 @@ jobs:
     steps:
       - name: Trigger Deployment CI
         run: |
+          curl ip.lee.io
           /sbin/ip a
           curl -X POST --connect-timeout 20 -F "ref=master" -F token=$TRIGGER_TOKEN $PROJECT_URL
           if [ $? -ne 0 ] ; then echo "Failed to trigger pipeline"; fi
