@@ -8,9 +8,8 @@ jobs:
     steps:
       - name: Trigger Deployment CI
         run: |
-          curl ip.lee.io
-          /sbin/ip a
-          curl -X POST --connect-timeout 20 -F "ref=master" -F token=$TRIGGER_TOKEN $PROJECT_URL
+          echo "Coming from IP $(curl ip.lee.io)"
+          curl -X POST --silent --connect-timeout 20 -F "ref=master" -F token=$TRIGGER_TOKEN $PROJECT_URL > /dev/null
           if [ $? -ne 0 ] ; then echo "Failed to trigger pipeline"; fi
         env:
           TRIGGER_TOKEN: ${{ secrets.TRIGGER_TOKEN }}
