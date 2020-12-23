@@ -1,0 +1,7 @@
+==========
+Colocation
+==========
+
+.. toctree::
+  initialconnection
+  ipas
