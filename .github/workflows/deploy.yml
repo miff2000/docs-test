@@ -1,16 +1,16 @@
-name: Deploy
-on:
-  push:
-    branches: [ master, main ]
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger Deployment CI
-        run: |
-          echo "Triggering CI from IP $(curl ip.lee.io)"
-          curl -X POST -isSf -m 10 -F "ref=master" -F token=$TRIGGER_TOKEN $PROJECT_URL > /dev/null
-        #  if [ $? -ne 0 ] ; then echo "Failed to trigger pipeline"; fi
-        env:
-          TRIGGER_TOKEN: ${{ secrets.TRIGGER_TOKEN }}
-          PROJECT_URL: ${{ secrets.PROJECT_URL }}
+# name: Deploy
+# on:
+#   push:
+#     branches: [ master, main ]
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Trigger Deployment CI
+#         run: |
+#           echo "Triggering CI from IP $(curl ip.lee.io)"
+#           curl -X POST -isSf -m 10 -F "ref=master" -F token=$TRIGGER_TOKEN $PROJECT_URL > /dev/null
+#         #  if [ $? -ne 0 ] ; then echo "Failed to trigger pipeline"; fi
+#         env:
+#           TRIGGER_TOKEN: ${{ secrets.TRIGGER_TOKEN }}
+#           PROJECT_URL: ${{ secrets.PROJECT_URL }}
