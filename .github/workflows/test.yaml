@@ -9,9 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: |
-          env
-          git diff --name-only $GITHUB_BASE_REF..$GITHUB_REF
+      - name: Get All Changed Files
+        uses: jitterbit/get-changed-files@v1
+      - run: env | sort
+      - run: ./tests.sh ${{ steps.files.outputs.all }}
       # - run: ./tests.sh
       # - uses: actions/setup-python@v2
       #   with:

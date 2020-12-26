@@ -2,7 +2,7 @@
 
 # This script will do a simple check for meta information in changed *.md files
 
-file_names=`(git diff --name-only $TRAVIS_COMMIT_RANGE || echo "") | tr '\n' ' '`
+file_names="$@"
 
 for f in $file_names; do
   if [ ! -f "$f" ]; then
