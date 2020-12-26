@@ -2,6 +2,7 @@
 
 # This script will do a simple check for meta information in changed *.md files
 
+echo "Running with arguments $@"
 file_names="$@"
 
 for f in $file_names; do
