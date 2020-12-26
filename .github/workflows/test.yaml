@@ -10,8 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          echo Base:${GITHUB_BASE_REF} Head:${GITHUB_HEAD_REF}
-          git diff ${GITHUB_BASE_REF}..${GITHUB_HEAD_REF}
+          env
       # - run: ./tests.sh
       # - uses: actions/setup-python@v2
       #   with:
