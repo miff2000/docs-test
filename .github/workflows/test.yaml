@@ -30,6 +30,7 @@ jobs:
       - name: Render docs to html
         uses: ammaraskar/sphinx-action@master
         with:
+          pre-build-command: python -m pip install recommonmark
           docs-folder: "source/"
           build-command: "sphinx-build -n -d build/doctrees . build/html"
 
