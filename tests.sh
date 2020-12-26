@@ -2,18 +2,16 @@
 
 # This script will do a simple check for meta information in changed *.md files
 
-echo "Running with arguments $@"
 file_names="$@"
 
 for f in $file_names; do
-
-  echo -e "\nChecking file ${f}"
 
   if [ ! -f "$f" ]; then
     echo "$f : WARNING Is not a file or does not exist anymore."
     continue
   fi
 
+  echo -e "\nChecking changed file ${f}"
   case $f in
     *.md )
       #check for new meta title
