@@ -9,13 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: env | sort
+      
+      # - run: env | sort
+
       - name: Get All Changed Files
         id: changed_files
         uses: jitterbit/get-changed-files@v1
-      - run: echo ${{ steps.changed_files.outputs.all }}
-      - run: ./tests.sh ${{ steps.changed_files.outputs.all }}
-      # - run: ./tests.sh
+      
+      - name: Run initial tests
+        run: ./tests.sh ${{ steps.changed_files.outputs.all }}
+      
       # - uses: actions/setup-python@v2
       #   with:
       #     python-version: '3.8'
@@ -23,4 +26,15 @@ jobs:
       # - run: |
       #     python -m pip install --upgrade pip
       #     pip install Sphinx recommonmark
-          
+      
+      - name: Render docs to html
+        uses: ammaraskar/sphinx-action@master
+        with:
+          docs-folder: "source/"
+          build-command: "sphinx-build -n -d build/doctrees . build/html"
+
+      - name: Add in compiled CSS and Javascript
+        run: |
+          make build/html/_static/css/app.css
+          make build/html/_static/app.js
+
