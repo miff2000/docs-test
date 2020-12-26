@@ -12,6 +12,7 @@ jobs:
       - run: env | sort
       - name: Get All Changed Files
         uses: jitterbit/get-changed-files@v1
+      - run: echo ${{ steps.files.outputs.all }}
       - run: ./tests.sh ${{ steps.files.outputs.all }}
       # - run: ./tests.sh
       # - uses: actions/setup-python@v2
