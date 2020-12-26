@@ -11,9 +11,10 @@ jobs:
       - uses: actions/checkout@v2
       - run: env | sort
       - name: Get All Changed Files
+        id: changed_files
         uses: jitterbit/get-changed-files@v1
-      - run: echo ${{ steps.files.outputs.all }}
-      - run: ./tests.sh ${{ steps.files.outputs.all }}
+      - run: echo ${{ steps.changed_files.outputs.all }}
+      - run: ./tests.sh ${{ steps.changed_files.outputs.all }}
       # - run: ./tests.sh
       # - uses: actions/setup-python@v2
       #   with:
