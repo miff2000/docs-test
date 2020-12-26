@@ -11,14 +11,14 @@ jobs:
       - name: Check out source files
         uses: actions/checkout@v2
       
-      - name: Get All Changed Files
+      - name: Get a list of changed files
         uses: jitterbit/get-changed-files@v1
         id: changed_files
       
       - name: Run initial tests
         run: ./tests.sh ${{ steps.changed_files.outputs.all }}
       
-      - name: Render docs to html
+      - name: Render docs to HTML
         uses: ammaraskar/sphinx-action@master
         with:
           pre-build-command: python -m pip install recommonmark
